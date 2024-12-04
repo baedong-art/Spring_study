@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link th:href="@{/css/bootstrap.min.css}"
+        href="css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" href="/css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center; /* 수평 중앙 정렬 */
+      align-items: flex-start; /* 세로 정렬을 위쪽에 */
+      height: 100vh; /* 화면 전체 높이 */
+    }
+
+    .container {
+      max-width: 600px;
+      margin-top: 300px; /* 상단 여백을 주어 화면 중앙에 가깝게 위치 */
+      background-color: rgba(255, 255, 255, 0.8); /* 배경색 */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 */
+    }
+  </style>
+
+</head>
+
+<body>
+<div class="container" style="max-width: 600px">
+  <div class="py-5 text-center">
+    <h2>홈 화면</h2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg" type="button"
+              th:onclick="|location.href='@{/members/add}'|">
+        회원 가입
+      </button>
+    </div>
+    <div class="col">
+      <button class="w-100 btn btn-dark btn-lg"
+              onclick="location.href='items.html'"
+              th:onclick="|location.href='@{/login}'|" type="button">
+        로그인
+      </button>
+    </div>
+  </div>
+  <hr class="my-4">
+  <div>
+    <img th:src="@{/images/test.png}">
+  </div>
+
+</div> <!-- /container -->
+</body>
+</html>
