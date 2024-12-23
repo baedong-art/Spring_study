@@ -163,7 +163,7 @@ public class LoginController {
         model.addAttribute("loginSuccess", true);
 
 
-        return "redirect:"+redirectURL + "?loginSuccess=true";
+        return "redirect:"+redirectURL;
     }
 
 

@@ -20,6 +20,8 @@ public class Member {
     @NotEmpty
     private String password2;
 
+    private String role;
+
     @AssertTrue(message = "비밀번호가 일치하지 않습니다.")
     public boolean isPasswordEqual() {
         return password !=null && password.equals(password2);

@@ -1,38 +1,30 @@
 package hello.login.web.member;
 
 
-import hello.login.domain.member.AdminRepository;
 import hello.login.domain.member.Member;
 import hello.login.domain.member.MemberRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
-@RequestMapping("/admin")
 public class AdminController {
 
-    private final AdminRepository adminRepository;
+    private final MemberRepository memberRepository;
 
-    @GetMapping("/add")
-    public String addForm(@ModelAttribute("member") Member member) {
-        return "members/addAdminForm";
+    public AdminController(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
-    @PostMapping("/add")
-    public String save(@Valid @ModelAttribute Member member, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "members/addAdminForm";
-        }
-        adminRepository.save(member);
-        return "redirect:/";
+    @GetMapping("/admin/list")
+    public String adminList(Model model) {
+        // 모든 관리자 회원 조회 (예시: role이 "A"인 사용자만 필터링)
+        List<Member> adminMembers = (List<Member>) memberRepository.findByRole("A");
+        model.addAttribute("admins", adminMembers);
+
+        return "ok";
     }
 
 }

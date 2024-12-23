@@ -39,5 +39,7 @@ public class MemberRepository {
         store.clear();
     }
 
-
+    public  Member findByRole(String role) {
+        return store.get(role);
+    }
 }
